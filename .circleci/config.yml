@@ -14,12 +14,13 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible # install the dependencies
+            # install the dependencies needed for my playbook
+            apk add --update ansible
       - run: # Install ansible in the agent that is running this job
           name: Configure server
           command: |
             ansible-playbook -i inventory.txt playbook.yml
 workflows:
-  configure_infrastructure-workflow:
+  my-workflow:
     jobs:
       - configure_infrastructure
